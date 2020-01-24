@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:WPFBindingExample"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <local:ViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <StackPanel DataContext="{StaticResource ViewModel}">
+        <TextBox Text="{Binding Path=VmText,
+                        Mode=OneWayToSource, 
+                        UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="{Binding VmText,
+                          UpdateSourceTrigger=PropertyChanged}"/>
+    </StackPanel>
 </Window>
